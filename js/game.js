@@ -378,6 +378,7 @@
      * Отрисовка экрана паузы.
      */
     _drawPauseScreen: function() {
+      var canvas = document.querySelector('canvas');
       switch (this.state.currentStatus) {
         case Verdict.WIN:
           console.log('you have won!');
