@@ -1,3 +1,4 @@
+/* global Gallery: true*/
 'use strict';
 
 (function() {
@@ -833,6 +834,16 @@
     if (moveClouds) {
       clouds.style.backgroundPosition = document.body.scrollTop + 'px';
     }
+  });
+
+  var gallery = new Gallery();
+  var photos = document.querySelectorAll('.photogallery-image');
+
+  Array.prototype.forEach.call(photos, function(item) {
+    item.addEventListener('click', function(evt) {
+      evt.preventDefault();
+      gallery.show();
+    });
   });
 
 })();

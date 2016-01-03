@@ -1,4 +1,4 @@
-/* global Review: true*/
+/* global Review: true, Gallery: true*/
 'use strict';
 
 (function() {
@@ -17,6 +17,8 @@
   var REVIEWS_IN_PAGE = 3;
   var currentPage = 0;
   var allReviews = null;
+
+  var gallery = new Gallery();
 
   filter.classList.add('invisible');
   reviewsContainer.classList.add('reviews-list-loading');
@@ -70,6 +72,7 @@
     if (replace) {
       var renderedElements = container.querySelectorAll('.review');
       Array.prototype.forEach.call(renderedElements, function(element) {
+        element.removeEventListener('click', _onClick);
         container.removeChild(element);
       });
     }
@@ -79,11 +82,16 @@
     var reviewsOnPage = reviewsToRender.slice(from, to);
 
     reviewsOnPage.forEach(function(review) {
-      var cloneElement = new Review(review);
-      cloneElement.render();
-      fragment.appendChild(cloneElement.element);
+      var newReviewElement = new Review(review);
+      newReviewElement.render();
+      fragment.appendChild(newReviewElement.element);
+      newReviewElement.element.addEventListener('click', _onClick);
     });
     container.appendChild(fragment);
+  }
+
+  function _onClick() {
+    gallery.show();
   }
 
   function filterReviews(reviews) {
