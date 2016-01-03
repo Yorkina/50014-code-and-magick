@@ -4,20 +4,13 @@
   var templateElem = document.querySelector('#review-template');
   var template = 'content' in templateElem ? templateElem.content : templateElem;
   templateElem.style.display = 'none';
-
   /**
-  * @const {number}
-  */
-  var IMAGE_TIMEOUT = 1000000;
-  // var timeOut;
-  /**
-   *@param{Object} data
-   *@constructor
+   * @const {number}
    */
-
+  var IMAGE_TIMEOUT = 1000;
   /**
-  * @const {Array.<string>}
-  */
+   * @const {Array.<string>}
+   */
   var RATINGS = [
     'one',
     'two',
@@ -25,7 +18,10 @@
     'four',
     'five'
   ];
-
+  /**
+   * @param{Object} data
+   * @constructor
+   */
   function Review(data) {
     this._data = data;
     this.pictureFailure = this.pictureFailure.bind(this);
