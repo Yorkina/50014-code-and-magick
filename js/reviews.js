@@ -44,10 +44,16 @@
     renderReviews(filterReviews(allReviews), currentPage);
   });
 
+  /**
+   * @param {string} url
+   * @param {requestCallback} callback
+   */
   function loadData(url, callback) {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'data/reviews.json');
-
+   /**
+    * @param {Event} event
+    */
     xhr.onload = function(event) {
       if (xhr.status === 200) {
         callback(false, JSON.parse(event.target.response));
@@ -62,10 +68,11 @@
 
     xhr.send();
   }
-
- /**
-  * @returns {Object} HTML как document-fragment
-  */
+  /**
+   * @param {Object} reviewsToRender
+   * @param {Number} pageNumber
+   * @param {Boolean} replace
+   */
   function renderReviews(reviewsToRender, pageNumber, replace) {
     if (replace) {
       var renderedElements = container.querySelectorAll('.review');
@@ -86,6 +93,10 @@
     container.appendChild(fragment);
   }
 
+  /**
+   * @param {Object} reviews
+   * @returns {Object} reviews
+   */
   function filterReviews(reviews) {
     var filteredReviews = null;
     switch (activeFilter) {

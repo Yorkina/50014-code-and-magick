@@ -28,10 +28,12 @@
     this.pictureLoad = this.pictureLoad.bind(this);
   }
 
+  /** @override */
   Review.prototype.pictureLoad = function() {
     clearTimeout(this._timeOut);
   };
 
+  /** @override */
   Review.prototype.pictureFailure = function() {
     this._picture.onerror = null;
     this._picture.src = '';
@@ -39,11 +41,15 @@
     clearTimeout(this._timeOut);
   };
 
+  /** @override */
   Review.prototype.render = function() {
     this.element = template.children[0].cloneNode(true);
     this.element.querySelector('.review-rating').textContent = '';
     this.element.querySelector('.review-text').textContent = this._data.description;
 
+   /**
+    * @type {Image}
+    */
     this._picture = new Image(124, 124);
 
     this._picture.onerror = this.pictureFailure;
