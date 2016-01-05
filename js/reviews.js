@@ -16,6 +16,9 @@
   */
   var REVIEWS_IN_PAGE = 3;
   var currentPage = 0;
+ /**
+  * @type {?Object}
+  */
   var allReviews = null;
 
   filter.classList.add('invisible');
@@ -71,7 +74,7 @@
   /**
    * @param {Object} reviewsToRender
    * @param {Number} pageNumber
-   * @param {Boolean} replace
+   * @param {boolean} replace
    */
   function renderReviews(reviewsToRender, pageNumber, replace) {
     if (replace) {
@@ -86,6 +89,9 @@
     var reviewsOnPage = reviewsToRender.slice(from, to);
 
     reviewsOnPage.forEach(function(review) {
+      /**
+       * @type {Review}
+       */
       var newReviewElement = new Review(review);
       newReviewElement.render();
       fragment.appendChild(newReviewElement.element);
