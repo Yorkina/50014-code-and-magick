@@ -37,7 +37,7 @@
    */
   function getExpire() {
    /**
-    * @type {Date} Date
+    * @type {Date}
     */
     var currentDate = new Date();
     var myLastBirthday = new Date(currentDate.getFullYear(), 2, 28);
