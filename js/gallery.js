@@ -41,15 +41,13 @@
     this.galleryContainer.classList.add('invisible');
     this._closeButton.removeEventListener('click', this._onCloseClick);
     document.body.removeEventListener('keydown', this._onDocumentKeyDown);
-    this._turnLeft.addEventListener('click', this._onLeftClick);
-    this._turnRight.addEventListener('click', this._onRightClick);
+    this._turnLeft.removeEventListener('click', this._onLeftClick);
+    this._turnRight.removeEventListener('click', this._onRightClick);
   };
 
   /** @private */
   Gallery.prototype._onCloseClick = function() {
-    this._closeButton.addEventListener('click', function() {
-      this.hide();
-    }.bind(this));
+    this.hide();
   };
 
   /** @private */
