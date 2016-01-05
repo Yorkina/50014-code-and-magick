@@ -74,7 +74,7 @@
   /**
    * @param {Object} reviewsToRender
    * @param {Number} pageNumber
-   * @param {boolean} replace
+   * @param {boolean=} replace
    */
   function renderReviews(reviewsToRender, pageNumber, replace) {
     if (replace) {
