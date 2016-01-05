@@ -28,32 +28,45 @@
     this._onCloseClick = this._onCloseClick.bind(this);
     this._onDocumentKeyDown = this._onDocumentKeyDown.bind(this);
     this.show = this.show.bind(this);
+    this._onRightClick = this._onRightClick.bind(this);
+    this._onLeftClick = this._onLeftClick.bind(this);
 
-    this._currentPhoto = 0;
     this._currentNumber = this.galleryContainer.querySelector('.preview-number-current');
     this._totalNumber = this.galleryContainer.querySelector('.preview-number-total');
   }
 
+  /**
+   * @param {Array.<Object>} photos
+   */
   Gallery.prototype.setPictures = function(photos) {
     this.photos = photos;
     this._totalNumber.innerHTML = photos.length;
   };
 
+  /**
+   * @param {number} index
+   */
   Gallery.prototype.setCurrentPictures = function(index) {
     this._currentIndex = index;
     this._currentNumber.innerText = this._currentIndex + 1;
 
-    var currentPhoto = new Image();
-    currentPhoto.src = this.photos[index].src;
+    /**
+     * @type {Image}
+     */
+    var newPhoto = new Image();
+    newPhoto.src = this.photos[index].src;
 
-    var currentPhotoContainer = document.querySelector('.overlay-gallery-preview');
-    if (currentPhotoContainer.querySelector('img')) {
-      currentPhotoContainer.removeChild(currentPhotoContainer.querySelector('img'));
+    var preview = document.querySelector('.overlay-gallery-preview');
+    var currentPhoto = preview.querySelector('img');
+    if (currentPhoto) {
+      preview.removeChild(currentPhoto);
     }
-    currentPhotoContainer.appendChild(currentPhoto);
+    preview.appendChild(newPhoto);
   };
 
-  /** @override */
+  /**
+   * @param {MouseEvent} evt
+   */
   Gallery.prototype.show = function(evt) {
     evt.preventDefault();
     this.galleryContainer.classList.remove('invisible');
@@ -80,16 +93,20 @@
 
   /** @private */
   Gallery.prototype._onLeftClick = function() {
-    console.log('click LEFT');
+    if (this._currentIndex > 0) {
+      this.setCurrentPictures(this._currentIndex - 1);
+    }
   };
 
   /** @private */
   Gallery.prototype._onRightClick = function() {
-    console.log('click RIGHT');
+    if (this._currentIndex < this.photos.length - 1) {
+      this.setCurrentPictures(this._currentIndex + 1);
+    }
   };
 
   /**
-   * @param {Event}
+   * @param {KeyboardsEvent} evt
    * @private
    */
   Gallery.prototype._onDocumentKeyDown = function(evt) {
@@ -99,11 +116,11 @@
         break;
 
       case Key.LEFT:
-        this.setCurrentPictures(this._currentIndex - 1);
+        this._onLeftClick();
         break;
 
       case Key.RIGHT:
-        this.setCurrentPictures(this._currentIndex + 1);
+        this._onRightClick();
         break;
     }
   };

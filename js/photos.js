@@ -2,31 +2,31 @@
 /* global Photo: true, Gallery: true */
 
 (function() {
-
-  var photosContainer = document.querySelector('.photogallery');
-  var photosElements = photosContainer.querySelectorAll('.photogallery-image img');
+  var images = document.querySelectorAll('.photogallery-image img');
 
   /**
    * @returns {Array.<Object>}
    */
   function getPhotos() {
-    var photos = Array.prototype.map.call(photosElements, function(item) {
+    var photos = Array.prototype.map.call(images, function(item) {
       var newPhoto = new Photo(item.src);
-      return (newPhoto);
+      return newPhoto;
     });
     return photos;
   }
 
+  /**
+   * @type {Gallery}
+   */
   var gallery = new Gallery();
   gallery.setPictures(getPhotos());
 
-  Array.prototype.forEach.call(photosElements, function(item, index) {
+  Array.prototype.forEach.call(images, function(element, index) {
 
-    item.addEventListener('click', function() {
+    element.addEventListener('click', function() {
       gallery.setCurrentPictures(index);
     });
 
-    item.addEventListener('click', gallery.show);
+    element.addEventListener('click', gallery.show);
   });
 })();
-

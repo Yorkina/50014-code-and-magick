@@ -8,9 +8,5 @@
     this.src = src;
   };
 
-  Photo.prototype.getSrc = function() {
-    return this.src;
-  };
-
   window.Photo = Photo;
 })();
