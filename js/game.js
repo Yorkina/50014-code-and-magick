@@ -1,4 +1,3 @@
-/* global Gallery: true*/
 'use strict';
 
 (function() {
