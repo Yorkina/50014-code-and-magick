@@ -27,9 +27,35 @@
     //привязываем контекст
     this._onCloseClick = this._onCloseClick.bind(this);
     this._onDocumentKeyDown = this._onDocumentKeyDown.bind(this);
+    this.show = this.show.bind(this);
+
+    this._currentPhoto = 0;
+    this._currentNumber = this.galleryContainer.querySelector('.preview-number-current');
+    this._totalNumber = this.galleryContainer.querySelector('.preview-number-total');
   }
+
+  Gallery.prototype.setPictures = function(photos) {
+    this.photos = photos;
+    this._totalNumber.innerHTML = photos.length;
+  };
+
+  Gallery.prototype.setCurrentPictures = function(index) {
+    this._currentIndex = index;
+    this._currentNumber.innerText = this._currentIndex + 1;
+
+    var currentPhoto = new Image();
+    currentPhoto.src = this.photos[index].src;
+
+    var currentPhotoContainer = document.querySelector('.overlay-gallery-preview');
+    if (currentPhotoContainer.querySelector('img')) {
+      currentPhotoContainer.removeChild(currentPhotoContainer.querySelector('img'));
+    }
+    currentPhotoContainer.appendChild(currentPhoto);
+  };
+
   /** @override */
-  Gallery.prototype.show = function() {
+  Gallery.prototype.show = function(evt) {
+    evt.preventDefault();
     this.galleryContainer.classList.remove('invisible');
     this._closeButton.addEventListener('click', this._onCloseClick);
     this._turnLeft.addEventListener('click', this._onLeftClick);
@@ -41,8 +67,8 @@
     this.galleryContainer.classList.add('invisible');
     this._closeButton.removeEventListener('click', this._onCloseClick);
     document.body.removeEventListener('keydown', this._onDocumentKeyDown);
-    this._turnLeft.addEventListener('click', this._onLeftClick);
-    this._turnRight.addEventListener('click', this._onRightClick);
+    this._turnLeft.removeEventListener('click', this._onLeftClick);
+    this._turnRight.removeEventListener('click', this._onRightClick);
   };
 
   /** @private */
@@ -73,11 +99,11 @@
         break;
 
       case Key.LEFT:
-        console.log('work LEFT');
+        this.setCurrentPictures(this._currentIndex - 1);
         break;
 
       case Key.RIGHT:
-        console.log('work RIGHT');
+        this.setCurrentPictures(this._currentIndex + 1);
         break;
     }
   };
