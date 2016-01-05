@@ -46,9 +46,7 @@
   };
 
   Gallery.prototype._onCloseClick = function() {
-    this._closeButton.addEventListener('click', function() {
-      this.hide();
-    }.bind(this));
+    this.hide();
   };
 
   Gallery.prototype._onLeftClick = function() {
