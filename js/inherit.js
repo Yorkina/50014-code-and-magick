@@ -7,7 +7,7 @@
    */
   function inherit(Child, Parent) {
     var EmptyConstructor = function() {};
-    EmptyConstructor.prototype = new Parent();
+    EmptyConstructor.prototype = Parent.prototype;
     Child.prototype = new EmptyConstructor();
   }
 
