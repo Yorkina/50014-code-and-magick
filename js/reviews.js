@@ -79,9 +79,9 @@
     var reviewsOnPage = reviewsToRender.slice(from, to);
 
     reviewsOnPage.forEach(function(review) {
-      var cloneElement = new Review(review);
-      cloneElement.render();
-      fragment.appendChild(cloneElement.element);
+      var newReviewElement = new Review(review);
+      newReviewElement.render();
+      fragment.appendChild(newReviewElement.element);
     });
     container.appendChild(fragment);
   }
