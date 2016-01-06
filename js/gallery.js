@@ -34,7 +34,6 @@
     this._totalNumber = this.galleryContainer.querySelector('.preview-number-total');
   }
 
-<<<<<<< HEAD
   /**
    * @param {Array.<Object>} photos
    */
@@ -69,9 +68,6 @@
    */
   Gallery.prototype.show = function(evt) {
     evt.preventDefault();
-=======
-  Gallery.prototype.show = function() {
->>>>>>> module8-task2
     this.galleryContainer.classList.remove('invisible');
     this._closeButton.addEventListener('click', this._onCloseClick);
     this._turnLeft.addEventListener('click', this._onLeftClick);
@@ -107,11 +103,7 @@
   };
 
   /**
-<<<<<<< HEAD
    * @param {KeyboardsEvent} evt
-=======
-   * @param {Event} evt
->>>>>>> module8-task2
    * @private
    */
   Gallery.prototype._onDocumentKeyDown = function(evt) {
