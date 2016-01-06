@@ -17,7 +17,6 @@
   function Gallery() {
     //поиск контейнеров
     this.galleryContainer = document.querySelector('.overlay-gallery');
-    this.photoContainer = document.querySelector('.photogallery');
 
     //поиск элементов в контейнерах
     this._closeButton = this.galleryContainer.querySelector('.overlay-gallery-close');
@@ -35,6 +34,7 @@
     this._totalNumber = this.galleryContainer.querySelector('.preview-number-total');
   }
 
+<<<<<<< HEAD
   /**
    * @param {Array.<Object>} photos
    */
@@ -69,13 +69,16 @@
    */
   Gallery.prototype.show = function(evt) {
     evt.preventDefault();
+=======
+  Gallery.prototype.show = function() {
+>>>>>>> module8-task2
     this.galleryContainer.classList.remove('invisible');
     this._closeButton.addEventListener('click', this._onCloseClick);
     this._turnLeft.addEventListener('click', this._onLeftClick);
     this._turnRight.addEventListener('click', this._onRightClick);
     document.body.addEventListener('keydown', this._onDocumentKeyDown);
   };
-  /** @override */
+
   Gallery.prototype.hide = function() {
     this.galleryContainer.classList.add('invisible');
     this._closeButton.removeEventListener('click', this._onCloseClick);
@@ -86,9 +89,7 @@
 
   /** @private */
   Gallery.prototype._onCloseClick = function() {
-    this._closeButton.addEventListener('click', function() {
-      this.hide();
-    }.bind(this));
+    this.hide();
   };
 
   /** @private */
@@ -106,7 +107,11 @@
   };
 
   /**
+<<<<<<< HEAD
    * @param {KeyboardsEvent} evt
+=======
+   * @param {Event} evt
+>>>>>>> module8-task2
    * @private
    */
   Gallery.prototype._onDocumentKeyDown = function(evt) {

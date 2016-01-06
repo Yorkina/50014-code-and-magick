@@ -49,7 +49,7 @@
 
   /**
    * @param {string} url
-   * @param {requestCallback} callback
+   * @param {Function} callback
    */
   function loadData(url, callback) {
     var xhr = new XMLHttpRequest();
@@ -73,7 +73,7 @@
   }
   /**
    * @param {Object} reviewsToRender
-   * @param {Number} pageNumber
+   * @param {number} pageNumber
    * @param {boolean=} replace
    */
   function renderReviews(reviewsToRender, pageNumber, replace) {
@@ -100,8 +100,8 @@
   }
 
   /**
-   * @param {Object} reviews
-   * @returns {Object} reviews
+   * @param {Array.<Object>} reviews
+   * @returns {Array.<Object>}
    */
   function filterReviews(reviews) {
     var filteredReviews = null;

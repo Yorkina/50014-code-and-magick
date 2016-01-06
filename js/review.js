@@ -28,12 +28,10 @@
     this.pictureLoad = this.pictureLoad.bind(this);
   }
 
-  /** @override */
   Review.prototype.pictureLoad = function() {
     clearTimeout(this._timeOut);
   };
 
-  /** @override */
   Review.prototype.pictureFailure = function() {
     this._picture.onerror = null;
     this._picture.src = '';
@@ -41,7 +39,6 @@
     clearTimeout(this._timeOut);
   };
 
-  /** @override */
   Review.prototype.render = function() {
     this.element = template.children[0].cloneNode(true);
     this.element.querySelector('.review-rating').textContent = '';
