@@ -96,7 +96,7 @@
   }
 
   /**
-   * @param {Array} arr
+   * @param {Array.<Array>} arr
    */
   function showElement(arr) {
     if (arr[1]) {

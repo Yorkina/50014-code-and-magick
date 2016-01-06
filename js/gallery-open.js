@@ -2,7 +2,9 @@
 'use strict';
 
 (function() {
-
+  /**
+   * @type {Gallery}
+   */
   var gallery = new Gallery();
   var photos = document.querySelectorAll('.photogallery-image');
 

@@ -17,7 +17,6 @@
   function Gallery() {
     //поиск контейнеров
     this.galleryContainer = document.querySelector('.overlay-gallery');
-    this.photoContainer = document.querySelector('.photogallery');
 
     //поиск элементов в контейнерах
     this._closeButton = this.galleryContainer.querySelector('.overlay-gallery-close');
@@ -28,7 +27,7 @@
     this._onCloseClick = this._onCloseClick.bind(this);
     this._onDocumentKeyDown = this._onDocumentKeyDown.bind(this);
   }
-  /** @override */
+
   Gallery.prototype.show = function() {
     this.galleryContainer.classList.remove('invisible');
     this._closeButton.addEventListener('click', this._onCloseClick);
@@ -36,7 +35,7 @@
     this._turnRight.addEventListener('click', this._onRightClick);
     document.body.addEventListener('keydown', this._onDocumentKeyDown);
   };
-  /** @override */
+
   Gallery.prototype.hide = function() {
     this.galleryContainer.classList.add('invisible');
     this._closeButton.removeEventListener('click', this._onCloseClick);
@@ -61,7 +60,7 @@
   };
 
   /**
-   * @param {Event}
+   * @param {Event} evt
    * @private
    */
   Gallery.prototype._onDocumentKeyDown = function(evt) {
