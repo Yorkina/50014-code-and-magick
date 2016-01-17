@@ -2,7 +2,7 @@
 /**
  * @param {Array.<number>|number|boolean} a
  * @param {Array.<number>|number|boolean} b
- * @return {string} 
+ * @return {string}
  */
   function getMessage (a, b) {
     if(a === true) {

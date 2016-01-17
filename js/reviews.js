@@ -71,11 +71,12 @@
 
     xhr.send();
   }
-  /**
-   * @param {Object} reviewsToRender
-   * @param {number} pageNumber
-   * @param {boolean=} replace
-   */
+
+ /**
+  * @param  {Array.<Object>} reviewsToRender
+  * @param  {number} pageNumber
+  * @param  {boolean=} replace
+  */
   function renderReviews(reviewsToRender, pageNumber, replace) {
     if (replace) {
       var renderedElements = container.querySelectorAll('.review');
@@ -99,10 +100,10 @@
     container.appendChild(fragment);
   }
 
-  /**
-   * @param {Array.<Object>} reviews
-   * @returns {Array.<Object>}
-   */
+ /**
+  * @param  {Array.<Object>} reviews
+  * @returns {Array.<Object>}
+  */
   function filterReviews(reviews) {
     var filteredReviews = null;
     switch (activeFilter) {
