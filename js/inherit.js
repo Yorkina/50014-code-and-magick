@@ -1,15 +1,13 @@
 'use strict';
+/**
+ * @param {Function} Child
+ * @param {Function} Parent
+ */
+function inherit(Child, Parent) {
+  var EmptyConstructor = function() {};
+  EmptyConstructor.prototype = Parent.prototype;
+  Child.prototype = new EmptyConstructor();
+}
 
-(function() {
-  /**
-   * @param {Function} Child
-   * @param {Function} Parent
-   */
-  function inherit(Child, Parent) {
-    var EmptyConstructor = function() {};
-    EmptyConstructor.prototype = Parent.prototype;
-    Child.prototype = new EmptyConstructor();
-  }
+window.inherit = inherit;
 
-  window.inherit = inherit;
-})();
