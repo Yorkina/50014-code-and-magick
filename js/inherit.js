@@ -9,5 +9,4 @@ function inherit(Child, Parent) {
   Child.prototype = new EmptyConstructor();
 }
 
-window.inherit = inherit;
 
