@@ -62,4 +62,5 @@
   };
 
   window.Review = Review;
+
 })();
