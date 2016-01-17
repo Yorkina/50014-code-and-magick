@@ -44,6 +44,9 @@
     this.element.querySelector('.review-rating').textContent = '';
     this.element.querySelector('.review-text').textContent = this._data.description;
 
+   /**
+    * @type {Image}
+    */
     this._picture = new Image(124, 124);
 
     this._picture.onerror = this.pictureFailure;

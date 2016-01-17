@@ -17,7 +17,6 @@
   function Gallery() {
     //поиск контейнеров
     this.galleryContainer = document.querySelector('.overlay-gallery');
-    this.photoContainer = document.querySelector('.photogallery');
 
     //поиск элементов в контейнерах
     this._closeButton = this.galleryContainer.querySelector('.overlay-gallery-close');
@@ -45,18 +44,25 @@
     this._turnRight.removeEventListener('click', this._onRightClick);
   };
 
+  /** @private */
   Gallery.prototype._onCloseClick = function() {
     this.hide();
   };
 
+  /** @private */
   Gallery.prototype._onLeftClick = function() {
     console.log('click LEFT');
   };
 
+  /** @private */
   Gallery.prototype._onRightClick = function() {
     console.log('click RIGHT');
   };
 
+  /**
+   * @param {Event} evt
+   * @private
+   */
   Gallery.prototype._onDocumentKeyDown = function(evt) {
     switch (evt.keyCode) {
       case Key.ESC:

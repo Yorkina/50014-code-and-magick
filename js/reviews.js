@@ -16,6 +16,9 @@
   */
   var REVIEWS_IN_PAGE = 3;
   var currentPage = 0;
+ /**
+  * @type {?Object}
+  */
   var allReviews = null;
 
   filter.classList.add('invisible');
@@ -44,10 +47,16 @@
     renderReviews(filterReviews(allReviews), currentPage);
   });
 
+  /**
+   * @param {string} url
+   * @param {Function} callback
+   */
   function loadData(url, callback) {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'data/reviews.json');
-
+   /**
+    * @param {Event} event
+    */
     xhr.onload = function(event) {
       if (xhr.status === 200) {
         callback(false, JSON.parse(event.target.response));
@@ -81,6 +90,9 @@
     var reviewsOnPage = reviewsToRender.slice(from, to);
 
     reviewsOnPage.forEach(function(review) {
+      /**
+       * @type {Review}
+       */
       var newReviewElement = new Review(review);
       newReviewElement.render();
       fragment.appendChild(newReviewElement.element);

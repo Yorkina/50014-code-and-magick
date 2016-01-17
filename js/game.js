@@ -455,7 +455,7 @@
      * @param {CanvasRenderingContext2D} context
      * @param {string} text текст для отрисовки внутри контейнера
      * @param {number} lineHeight высота строки
-     * @return {{pharagraph: Array.<string>, width: number, height: number}} параметры для отрисовки контейнера с правильной высотой
+     * @returns {{pharagraph: Array.<string>, width: number, height: number}} параметры для отрисовки контейнера с правильной высотой
      * @private
      */
     _calcMessage: function(context, text, lineHeight) {
@@ -795,6 +795,11 @@
   var clouds = document.querySelector('.header-clouds');
   var moveClouds = true;
 
+  /**
+   * @param {Function} fn
+   * @param {number} hold
+   * @returns {Function}
+   */
   function throttle(fn, hold) {
     var last = 0;
     var timer = 0;

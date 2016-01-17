@@ -32,7 +32,13 @@
    */
   var SECONDS_IN_DAY = 60 * 60 * 24;
 
+  /**
+   * @returns {number}
+   */
   function getExpire() {
+   /**
+    * @type {Date}
+    */
     var currentDate = new Date();
     var myLastBirthday = new Date(currentDate.getFullYear(), 2, 28);
 
@@ -43,12 +49,16 @@
     var diffInDays = Math.floor((currentDate - myLastBirthday) / 1000 / SECONDS_IN_DAY);
     return diffInDays * SECONDS_IN_DAY;
   }
-
+  /**
+   * @param {MouseEvent} evt
+   */
   formOpenButton.onclick = function(evt) {
     evt.preventDefault();
     formContainer.classList.remove('invisible');
   };
-
+  /**
+   * @param {MouseEvent} evt
+   */
   formCloseButton.onclick = function(evt) {
     evt.preventDefault();
     formContainer.classList.add('invisible');
@@ -71,6 +81,9 @@
   }
   restoreCookies();
 
+  /**
+   * @returns {Array.<Array>}
+   */
   function reviewValidate() {
     var badMark = reviewFormMarks.value < 3;
     nameValue = !fieldName.value;
@@ -82,6 +95,9 @@
     ];
   }
 
+  /**
+   * @param {Array.<Array>} arr
+   */
   function showElement(arr) {
     if (arr[1]) {
       arr[0].classList.add('invisible');
