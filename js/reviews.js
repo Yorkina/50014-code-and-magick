@@ -64,7 +64,9 @@
   }
 
  /**
-  * @returns {Object} HTML как document-fragment
+  * @param  {Array.<Object>} reviewsToRender
+  * @param  {number} pageNumber
+  * @param  {boolean=} replace
   */
   function renderReviews(reviewsToRender, pageNumber, replace) {
     if (replace) {
@@ -86,6 +88,10 @@
     container.appendChild(fragment);
   }
 
+ /**
+  * @param  {Array.<Object>} reviews
+  * @returns {Array.<Object>}
+  */
   function filterReviews(reviews) {
     var filteredReviews = null;
     switch (activeFilter) {

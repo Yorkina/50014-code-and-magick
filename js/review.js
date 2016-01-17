@@ -19,7 +19,7 @@
     'five'
   ];
   /**
-   * @param{Object} data
+   * @param {Object} data
    * @constructor
    */
   function Review(data) {
